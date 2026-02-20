@@ -11,6 +11,8 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Bebas+Neue&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="css/wiked.css">
+
     <style>
         /* ===== RESET & BASE STYLES ===== */
         * {
@@ -181,6 +183,12 @@
             opacity: 0.5;
         }
 
+        footer p {
+            color: #888;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+
         @media (max-width: 900px) {
             .navigation {
                 padding: 1rem 20px;
@@ -263,6 +271,21 @@
             background: #dc2626;
             transition: 0.3s;
         }
+
+        .feroan,
+        .ash,
+        .alwin,
+        .jose {
+            font-weight: 600;
+            font-family: 'Bebas Neue';
+
+        }
+
+        .feroan{color:#4F6B66;}
+        .ash {color: #5E6672;}
+        .alwin{color:#6A5F70;}
+        .jose{color: #857B74;}
+
     </style>
 </head>
 
@@ -281,9 +304,8 @@
                 <a href="non-technical.html" class="nav-item">Non-Technical</a>
                 <a href="coordinators.html" class="nav-item">Coordinators</a>
                 <a href="about.html" class="nav-item">About</a>
-                <a href="contact.html" class="nav-item">Contact</a>
+                <a href="index.html#contact" class="nav-item">Contact</a>
             </nav>
-            
         </div>
     </header>
 
@@ -297,7 +319,7 @@
             <h2>WELCOME TO THE ARENA</h2>
             <p>Dectron'26 is not just a symposium; it's a high-stakes arena where the brightest minds come to bet on
                 their own innovation. This year, we've stripped away the corporate polish and embraced the thrill of the
-                gamble with our theme: <strong>The Wicked Jester</strong>.</p>
+                gamble with our theme: <strong><a class="wicked">The Wicked Jester</a></strong>.</p>
 
             <p>Every line of code written, every circuit designed, and every strategy formed is a card played in our
                 grand casino. We believe that true progress comes from calculated risks and the courage to double down
@@ -308,19 +330,23 @@
                     game. Dectron'26 is your seat at the table."</p>
             </div>
 
-            <p>Hosted by the Information Technology Department, Dectron'26 features two days of intense competition
-                across technical and non-technical domains. Whether you're aiming for the jackpot in our hackathon or
-                bluffing your way through our social games, the experience is designed to be wicked, thrilling, and
-                unforgettable.</p>
+            <p>
+                Hosted by the Electronics and Communication Department, Dectron'26 features two days of intense competition
+                across technical and non-technical domains. This website was designed and developed by 
+                <span class="feroan">Feroan Mothy</span>, 
+                <span class="ash">Ashwanth Krishana</span>, 
+                <span class="alwin">Alwin johith</span>, and 
+                <span class="jose">Joseph Rezenold</span>. 
+                Whether you're aiming for the jackpot in our hackathon or bluffing your way through our social games, the experience is designed to be wicked, thrilling, and unforgettable.
+            </p>
 
             <p>Are you ready to play? The Jester is waiting.</p>
 
-            <div class="jester-face"></div>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 DECTRON. National Level Symposium. The Wicked Jester is Watching.</p>
+        <p>© 2026 DECTRON. National Level Symposium.<br> <a class="wicked" href="https://github.com/Feroan101/">The Wicked Jester</a> is Watching.</p>
     </footer>
 
     <script>

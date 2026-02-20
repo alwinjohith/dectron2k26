@@ -10,6 +10,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Bebas+Neue&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="css/wiked.css">
     <style>
         /* ===== RESET & BASE STYLES ===== */
         * {
@@ -570,7 +572,7 @@
                 <a href="technical.html" class="nav-item">Technical</a>
                 <a href="non-technical.html" class="nav-item">Non-Technical</a>
                 <a href="coordinators.html" class="nav-item">Coordinators</a>
-                <a href="contact.html" class="nav-item">Contact</a>
+                <a href="index.html#contact" class="nav-item">Contact</a>
             </nav>
             
         </div>
@@ -668,76 +670,7 @@
             </div>
         </div>
 
-        <section class="registration-box">
-            <div class="reg-header">
-                <h2 class="reg-title">REGISTER NOW</h2>
-                <p class="reg-subtitle">Fill in your details to secure your slot at DECTRON 2K26.</p>
-            </div>
-
-            <form id="reg-form">
-                <h3 class="form-section-title">TEAM LEADER DETAILS</h3>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label class="label">TEAM NAME *</label>
-                        <input type="text" placeholder="Enter your team name" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="label">LEADER NAME *</label>
-                        <input type="text" placeholder="Leader's full name" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="label">LEADER EMAIL *</label>
-                        <input type="email" placeholder="example@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="label">LEADER PHONE *</label>
-                        <input type="tel" placeholder="+91 00000 00000" required>
-                    </div>
-                    <div class="form-group full">
-                        <label class="label">LEADER COLLEGE *</label>
-                        <input type="text" placeholder="Enter your institution name" required>
-                    </div>
-                </div>
-
-                <h3 class="form-section-title">TEAM MEMBERS</h3>
-                <div class="form-grid" id="member-inputs">
-                    <div class="form-group">
-                        <label class="label">MEMBER 2 NAME (OPTIONAL)</label>
-                        <input type="text" placeholder="Full name">
-                    </div>
-                    <div class="form-group">
-                        <label class="label">MEMBER 3 NAME (OPTIONAL)</label>
-                        <input type="text" placeholder="Full name">
-                    </div>
-                </div>
-
-                <h3 class="form-section-title">PAYMENT DETAILS</h3>
-                <div class="payment-card">
-                    <div class="qr-code">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dummy@upi&pn=DECTRON"
-                            alt="Payment QR">
-                    </div>
-                    <div class="payment-info">
-                        <div class="fee-highlight" id="ev-fee">FEE: ₹0</div>
-                        <p class="payment-steps">
-                            1. Scan the QR code to pay via UPI (GPay/PhonePe/Paytm).<br>
-                            2. Once paid, take a screenshot of the transaction.<br>
-                            3. Upload the screenshot below as proof of payment.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="file-upload">
-                    <div style="font-size: 32px; margin-bottom: 10px;">📤</div>
-                    <div class="label">CLICK OR DRAG TO UPLOAD PAYMENT PROOF</div>
-                    <div
-                        style="font-family: 'Inter', sans-serif !important; font-size: 12px; color: #555; margin-top: 5px;">
-                        JPG, PNG OR PDF (MAX 2MB)</div>
-                </div>
-
-                <button type="submit" class="submit-btn" id="sub-btn">UPLOAD PROOF TO REGISTER</button>
-            </form>
-        </section>
+        <button class="submit-btn" id="sub-btn">REGISTER NOW</button>
     </main>
 
     <footer>
@@ -746,6 +679,7 @@
     </footer>
 
     <script>
+
         const eventData = {
             'visionx': {
                 title: 'VISIONX',
@@ -756,7 +690,8 @@
                 team: 'Max 3 Members',
                 fee: '₹100',
                 stud: 'Niranjan D (8778428579), Pavithra D (9865108301), Patrick Rohan V (7540011423)',
-                fac: 'Dr. V. Nanammal'
+                fac: 'Dr. V. Nanammal',
+                form: 'https://forms.gle/hYxSMTrsCsHGjpG7A'
             },
             'creotix': {
                 title: 'CREOTIX',
@@ -767,7 +702,8 @@
                 team: 'Max 2 Members',
                 fee: '₹50',
                 stud: 'Lokpriyan M (9962040336), Janavi (6384074914), Vishali (7540036119)',
-                fac: 'Mr. B. Appoon'
+                fac: 'Mr. B. Appoon',
+                form: 'https://forms.gle/huAchXSvhLWmwN2N8'
             },
             'synoptix': {
                 title: 'SYNOPTIX',
@@ -778,7 +714,8 @@
                 team: '2 Members',
                 fee: '₹50',
                 stud: 'Deepika (86680149602), Krithika S (9952017659), Naviya Dayana D (9042974395)',
-                fac: 'Mrs. R. Gracelin Sheeba'
+                fac: 'Mrs. R. Gracelin Sheeba',
+                form: 'https://forms.gle/cQKYhPFiu4RG9mKp6'
             },
             'rtl': {
                 title: 'RTL',
@@ -789,7 +726,8 @@
                 team: '2-3 Members',
                 fee: '₹50',
                 stud: 'Rijo Devaraj B (8667853505)',
-                fac: 'Mr. E. Sakthivel'
+                fac: 'Mr. E. Sakthivel',
+                form: 'https://forms.gle/kpRuesdBRq3Fi7bWA'
             },
             'royal-gambit': {
                 title: 'ROYAL GAMBIT',
@@ -800,7 +738,8 @@
                 team: 'Individual',
                 fee: '₹50',
                 stud: 'Rohit (8248518988), Sheikha Aslin A (9789540204)',
-                fac: 'Mr. C. Jerlin Ajith Davidson'
+                fac: 'Mr. C. Jerlin Ajith Davidson',
+                form: 'https://forms.gle/HVDT5JUScuZLNmL26'
             },
             'pxarena': {
                 title: 'PXARENA',
@@ -811,7 +750,8 @@
                 team: 'Individual / Team',
                 fee: '₹100',
                 stud: 'Jai Prakash (8072505227), Anbususe (8300963029)',
-                fac: 'Mr. J. Ranjith Kumar'
+                fac: 'Mr. J. Ranjith Kumar',
+                form: 'https://forms.gle/WXe3ar5JX6CgqDy18'
             },
             'funfinity': {
                 title: 'FUNFINITY',
@@ -822,7 +762,8 @@
                 team: 'Individual',
                 fee: '₹30',
                 stud: 'Thirukumaran (9043299423)',
-                fac: 'Mrs. C. Basirekha'
+                fac: 'Mrs. C. Basirekha',
+                form: 'https://forms.gle/MmkSQnMQQt1EX38t5'
             },
             '404': {
                 title: '404 - FIND THE FAKE',
@@ -833,13 +774,15 @@
                 team: 'Team of 2',
                 fee: '₹50',
                 stud: 'Jerolin (7305936089)',
-                fac: 'Mrs. S. Priyadharshini'
+                fac: 'Mrs. S. Priyadharshini',
+                form: 'https://forms.gle/L1q49QGz1qu5B1Uk8 '
             }
         };
 
         const urlParams = new URLSearchParams(window.location.search);
         const eventId = urlParams.get('id');
         const data = eventData[eventId];
+        const registerBtn = document.getElementById("sub-btn");
 
         if (data) {
             document.title = `${data.title} - DECTRON 2K26`;
@@ -851,16 +794,13 @@
             document.getElementById('ev-desc').textContent = data.desc;
             document.getElementById('ev-stud-coord').textContent = data.stud;
             document.getElementById('ev-fac-coord').textContent = data.fac;
-            document.getElementById('ev-fee').textContent = `FEE: ${data.fee}`;
-            document.getElementById('sub-btn').textContent = `PAY ${data.fee} & REGISTER`;
+            registerBtn.addEventListener("click", () => {
+                window.open(data.form, "_blank");
+            });
         } else {
             document.getElementById('ev-title').textContent = 'EVENT NOT FOUND';
         }
 
-        document.getElementById('reg-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Payment proof received! Our team will verify and send confirmation within 24 hours. Welcome to the show.');
-        });
 
         function toggleMenu() {
             const nav = document.getElementById('nav-items-container');
