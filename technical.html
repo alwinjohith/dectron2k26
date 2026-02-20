@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Events - DECTRON 2K26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bebas Neue', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif !important;
+        }
+
+        html,
+        body {
+            background: #000000;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== NAVIGATION (Shared) ===== */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 40px;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 32px;
+            color: #dc2626;
+            text-decoration: none;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            color: #888;
+            font-size: 18px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: white;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #dc2626;
+        }
+
+        .nav-cta {
+            background: #dc2626;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #991b1b;
+            transform: scale(1.05);
+        }
+
+        /* ===== PAGE CONTENT ===== */
+        .page-header {
+            padding: 180px 40px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -20%);
+            z-index: -1;
+        }
+
+        .page-title {
+            font-size: clamp(60px, 10vw, 120px);
+            color: white;
+            line-height: 0.9;
+        }
+
+        .page-subtitle {
+            font-family: 'Inter', sans-serif !important;
+            color: #dc2626;
+            font-size: 18px;
+            letter-spacing: 4px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ===== EVENTS GRID ===== */
+        .grid-section {
+            padding: 0 40px 100px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .casino-card {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .casino-card:hover {
+            transform: translateY(-15px);
+            border-color: #dc2626;
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 64px;
+            color: rgba(220, 38, 38, 0.1);
+            line-height: 1;
+        }
+
+        .card-title {
+            font-size: 32px;
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-desc {
+            font-family: 'Inter', sans-serif !important;
+            color: #999;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .prize-pool {
+            color: #c5a059;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .bet-btn {
+            background: transparent;
+            border: 2px solid #dc2626;
+            color: #dc2626;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .bet-btn:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        footer {
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #555;
+            font-size: 14px;
+        }
+
+        footer p {
+            opacity: 0.6;
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 30px;
+            height: 2px;
+            background: #dc2626;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 1024px) {
+            .navigation {
+                padding: 1rem 20px;
+            }
+
+            .nav-items {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: #000;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                z-index: 1000;
+            }
+
+            .nav-items.active {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .page-header {
+                /* Changed from .hero-section to .page-header */
+                padding: 120px 20px 60px;
+            }
+
+            .page-title {
+                /* Changed from h1 to .page-title */
+                font-size: 60px;
+            }
+
+            .page-subtitle {
+                /* Changed from .subtitle to .page-subtitle */
+                font-size: 16px;
+            }
+
+            .grid-section {
+                padding: 0 20px 80px;
+                /* Adjusted padding for grid section */
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .casino-card {
+                padding: 30px;
+            }
+
+            footer {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navigation">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">DECTRON 2K26</a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-items" id="nav-items-container">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="technical.html" class="nav-item active">Technical Events</a>
+                <a href="non-technical.html" class="nav-item">Non-Technical</a>
+                <a href="coordinators.html" class="nav-item">Coordinators</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+            </nav>
+            <a href="register.html" class="nav-cta">Register Now</a>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">TECHNICAL EVENTS</h1>
+        <p class="page-subtitle">The High-Stakes Skill Floor</p>
+    </div>
+
+    <section class="grid-section">
+        <div class="events-grid">
+            <div class="casino-card">
+                <div class="card-number">A</div>
+                <h3 class="card-title">VISIONX</h3>
+                <p class="card-desc">Present your innovative research papers and technical ideas before a panel of
+                    expert judges. Showcase groundbreaking work in ECE!<br><br>
+                    <strong>ENTRY FEE:</strong> ₹100 per team<br>
+                    <strong>VENUE:</strong> ECE Seminar Hall.<br>
+                    <strong>FORMAT:</strong> Max 3 members, 10 min presentation + 5 min Q&A. Topics range from AI/ML to
+                    VLSI.<br>
+                    <strong>PRIZES:</strong> Exciting prizes and certificates for winners!<br>
+                    <strong>COORDINATORS:</strong> Niranjan D (8778428579), Pavithra D (9865108301), Patrick Rohan V
+                    (7540011423)
+                </p>
+                <div class="card-footer">
+                    <span class="prize-pool">FEE: ₹100</span>
+                    <a href="event-detail.html?id=visionx" class="bet-btn">SHOWCASE</a>
+                </div>
+            </div>
+
+            <div class="casino-card">
+                <div class="card-number">K</div>
+                <h3 class="card-title">CREOTIX</h3>
+                <p class="card-desc">Unleash your creativity! Design visually stunning technical posters that
+                    communicate complex engineering concepts in an engaging way.<br><br>
+                    <strong>ENTRY FEE:</strong> ₹50 per team<br>
+                    <strong>VENUE:</strong> DSP Lab.<br>
+                    <strong>FORMAT:</strong> Max 2 members, A1 poster. On-spot design (3 hours) or pre-prepared
+                    submission.<br>
+                    <strong>PRIZES:</strong> Recognition and exciting prizes for the best designs!<br>
+                    <strong>COORDINATORS:</strong> Lokpriyan M (9962040336), Janavi (6384074914), Vishali (7540036119)
+                </p>
+                <div class="card-footer">
+                    <span class="prize-pool">FEE: ₹50</span>
+                    <a href="event-detail.html?id=creotix" class="bet-btn">DESIGN</a>
+                </div>
+            </div>
+
+            <div class="casino-card">
+                <div class="card-number">Q</div>
+                <h3 class="card-title">SYNOPTIX</h3>
+                <p class="card-desc">Test your quick thinking in this fast-paced technical quiz covering all aspects of
+                    electronics and communication engineering!<br><br>
+                    <strong>ENTRY FEE:</strong> ₹50 per team<br>
+                    <strong>VENUE:</strong> EDC Lab.<br>
+                    <strong>FORMAT:</strong> Teams of 2, Multiple rounds: Written Test, Buzzer Round, Rapid Fire.
+                    Duration: 2 hrs.<br>
+                    <strong>PRIZES:</strong> Exciting rewards for the smartest teams!<br>
+                    <strong>COORDINATORS:</strong> Deepika (86680149602), Krithika S (9952017659), Naviya Dayana D
+                    (9042974395)
+                </p>
+                <div class="card-footer">
+                    <span class="prize-pool">FEE: ₹50</span>
+                    <a href="event-detail.html?id=synoptix" class="bet-btn">PLAY QUIZ</a>
+                </div>
+            </div>
+
+            <div class="casino-card">
+                <div class="card-number">J</div>
+                <h3 class="card-title">RTL</h3>
+                <p class="card-desc">Challenge your analytical skills! Decode, analyze, and understand existing systems
+                    through advanced reverse engineering techniques.<br><br>
+                    <strong>ENTRY FEE:</strong> ₹50 per team<br>
+                    <strong>VENUE:</strong> Communication lab.<br>
+                    <strong>FORMAT:</strong> Teams of 2-3. Analyze circuits/code, document findings, and propose
+                    improvements.<br>
+                    <strong>PRIZES:</strong> Certificates and prizes for the best reverse engineers!<br>
+                    <strong>COORDINATORS:</strong> Rijo Devaraj B (8667853505)
+                </p>
+                <div class="card-footer">
+                    <span class="prize-pool">FEE: ₹50</span>
+                    <a href="event-detail.html?id=rtl" class="bet-btn">DECODE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 DECTRON. National Level Symposium. The Wicked Jester is Watching.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('page-loaded');
+        });
+
+        function toggleMenu() {
+            const nav = document.getElementById('nav-items-container');
+            const toggle = document.querySelector('.mobile-toggle');
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

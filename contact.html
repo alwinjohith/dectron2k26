@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - DECTRON 2K26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bebas Neue', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif !important;
+        }
+
+        html,
+        body {
+            background: #000000;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== NAVIGATION (Shared) ===== */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 40px;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 32px;
+            color: #dc2626;
+            text-decoration: none;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            color: #888;
+            font-size: 18px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: white;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #dc2626;
+        }
+
+        /* ===== PAGE CONTENT ===== */
+        .page-header {
+            padding: 180px 40px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title {
+            font-size: clamp(60px, 10vw, 120px);
+            color: white;
+            line-height: 0.9;
+        }
+
+        .page-subtitle {
+            font-family: 'Inter', sans-serif !important;
+            color: #dc2626;
+            font-size: 18px;
+            letter-spacing: 4px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-section {
+            padding: 0 40px 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+        }
+
+        .contact-info {
+            background: #111;
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-info h2 {
+            font-size: 36px;
+            color: #dc2626;
+            margin-bottom: 40px;
+        }
+
+        .info-block {
+            margin-bottom: 40px;
+        }
+
+        .info-label {
+            font-family: 'Inter', sans-serif !important;
+            color: #c5a059;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .info-content {
+            color: white;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .contact-form {
+            background: #111;
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-family: 'Inter', sans-serif !important;
+            display: block;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .form-input {
+            width: 100%;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif !important;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
+        }
+
+        textarea.form-input {
+            height: 150px;
+            resize: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 50px;
+            font-family: 'Bebas Neue', sans-serif !important;
+            font-size: 20px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #991b1b;
+            transform: scale(1.02);
+        }
+
+        footer {
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #555;
+            font-size: 14px;
+        }
+
+        @media (max-width: 992px) {
+            .navigation {
+                padding: 1rem 20px;
+            }
+
+            .nav-items {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: #000;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                z-index: 1000;
+            }
+
+            .nav-items.active {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .page-header {
+                padding: 120px 20px 40px;
+            }
+
+            .page-title {
+                font-size: 60px;
+            }
+
+            .contact-section {
+                /* Changed from .contact-grid to .contact-section */
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 0 0 60px;
+            }
+
+            /* No direct .location-section in original, assuming this applies to contact-info if it were a separate section */
+            /* .location-section {
+                padding-bottom: 60px;
+            } */
+
+            footer {
+                padding: 40px 20px;
+            }
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 30px;
+            height: 2px;
+            background: #dc2626;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navigation">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">DECTRON 2K26</a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-items" id="nav-items-container">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="technical.html" class="nav-item">Technical Events</a>
+                <a href="non-technical.html" class="nav-item">Non-Technical</a>
+                <a href="coordinators.html" class="nav-item">Coordinators</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item active">Contact</a>
+            </nav>
+            <a href="register.html" class="nav-cta"
+                style="background: #dc2626; color: white; padding: 0.6rem 1.2rem; border-radius: 50px; text-decoration: none; font-size: 16px;">Register
+                Now</a>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">CALL THE DEALER</h1>
+        <p class="page-subtitle">Got a Question? Deal it to Us.</p>
+    </div>
+
+    <section class="contact-section">
+        <div class="contact-info">
+            <h2>HEADQUARTERS</h2>
+            <div class="info-block">
+                <span class="info-label">LOCATE US</span>
+                <p class="info-content">ECE Block,<br>Jeppiaar Engineering College,<br>Chennai</p>
+            </div>
+            <div class="info-block">
+                <span class="info-label">DIRECT LINE</span>
+                <p class="info-content">+91 99628 54995<br>+91 88385 25445</p>
+            </div>
+            <div class="info-block">
+                <span class="info-label">DIGITAL CORRESPONDENCE</span>
+                <p class="info-content">dectron2k26@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label class="form-label">IDENTITY</label>
+                    <input type="text" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">DIGITAL ADDRESS</label>
+                    <input type="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">YOUR HAND (MESSAGE)</label>
+                    <textarea class="form-input" placeholder="Tell us what's on your mind..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn"
+                    style="background: #dc2626; color: white; border: none; padding: 18px; border-radius: 50px; font-family: 'Bebas Neue', sans-serif !important; font-size: 20px; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; width: 100%;">SEND
+                    MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 DECTRON. National Level Symposium. The Wicked Jester is Watching.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('page-loaded');
+        });
+
+        function toggleMenu() {
+            const nav = document.getElementById('nav-items-container');
+            const toggle = document.querySelector('.mobile-toggle');
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

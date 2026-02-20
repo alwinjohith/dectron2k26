@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - DECTRON 2K26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bebas Neue', 'Inter', sans-serif !important;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 1.2rem 40px;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 28px;
+            color: #dc2626;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            color: #888;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .nav-item:hover {
+            color: white;
+        }
+
+        .nav-cta {
+            background: #dc2626;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-container {
+            max-width: 1200px;
+            margin: 140px auto 100px;
+            padding: 0 40px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #888;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 14px;
+            margin-bottom: 40px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #dc2626;
+        }
+
+        .back-link svg {
+            margin-right: 8px;
+        }
+
+        /* ===== EVENT TOP SECTION ===== */
+        .event-top-wrapper {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .poster-column {
+            flex: 0 0 400px;
+        }
+
+        .poster-placeholder {
+            width: 100%;
+            height: 560px;
+            background: #111;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poster-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, transparent 100%);
+        }
+
+        .poster-placeholder .icon {
+            font-size: 80px;
+            color: rgba(220, 38, 38, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .poster-placeholder .text {
+            color: #444;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .details-column {
+            flex: 1;
+        }
+
+        .event-category {
+            color: #dc2626;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .event-title {
+            font-size: 72px;
+            line-height: 1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .info-label {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 10px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-label svg {
+            color: #dc2626;
+        }
+
+        .info-value {
+            font-size: 18px;
+            color: #fff;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 600;
+        }
+
+        .about-section {
+            margin-bottom: 40px;
+        }
+
+        .section-h {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .about-text {
+            font-family: 'Inter', sans-serif !important;
+            color: #aaa;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .coordinators-section {
+            background: rgba(220, 38, 38, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.1);
+            border-radius: 16px;
+            padding: 25px;
+        }
+
+        .coord-group {
+            margin-bottom: 20px;
+        }
+
+        .coord-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .coord-label {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 12px;
+            color: #dc2626;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .coord-names {
+            font-family: 'Inter', sans-serif !important;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        /* ===== REGISTRATION FORM ===== */
+        .registration-box {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 50px;
+        }
+
+        .reg-header {
+            margin-bottom: 40px;
+        }
+
+        .reg-title {
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .reg-subtitle {
+            font-family: 'Inter', sans-serif !important;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-section-title {
+            font-size: 18px;
+            color: #dc2626;
+            margin: 40px 0 20px;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .label {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 12px;
+            color: #888;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input {
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 14px 18px;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif !important;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #dc2626;
+        }
+
+        .payment-card {
+            background: #000;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            padding: 30px;
+            border-radius: 16px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .payment-info {
+            flex: 1;
+        }
+
+        .fee-highlight {
+            font-size: 24px;
+            color: #dc2626;
+            margin-bottom: 10px;
+        }
+
+        .payment-steps {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .file-upload {
+            margin-top: 20px;
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: #dc2626;
+            background: rgba(220, 38, 38, 0.05);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #dc2626;
+            color: #fff;
+            border: none;
+            padding: 20px;
+            border-radius: 50px;
+            font-size: 24px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #991b1b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 80px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            color: #dc2626;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-copy {
+            font-family: 'Inter', sans-serif !important;
+            color: #555;
+            font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .navigation {
+                padding: 1.2rem 20px;
+            }
+
+            .nav-items {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: #000;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                z-index: 1000;
+            }
+
+            .nav-items.active {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .event-top-wrapper {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .poster-column {
+                flex: 0 0 auto;
+            }
+
+            .event-title {
+                font-size: 48px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .registration-box {
+                padding: 30px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: span 1;
+            }
+
+            .payment-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .qr-code {
+                margin: 0 auto;
+            }
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 30px;
+            height: 2px;
+            background: #dc2626;
+            transition: 0.3s;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+    <header class="navigation">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">DECTRON 2K26</a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-items" id="nav-items-container">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="technical.html" class="nav-item">Technical</a>
+                <a href="non-technical.html" class="nav-item">Non-Technical</a>
+                <a href="coordinators.html" class="nav-item">Coordinators</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+            </nav>
+            <a href="register.html" class="nav-cta">Register Now</a>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <a href="javascript:history.back()" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            BACK TO EVENTS
+        </a>
+
+        <div class="event-top-wrapper">
+            <div class="poster-column">
+                <div class="poster-placeholder" id="event-poster">
+                    <div class="icon">🖼️</div>
+                    <div class="text">POSTER COMING SOON</div>
+                </div>
+            </div>
+
+            <div class="details-column">
+                <span class="event-category" id="ev-cat">TECHNICAL EVENT</span>
+                <h1 class="event-title" id="ev-title">LOADING EVENT...</h1>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <span class="info-label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            DATE
+                        </span>
+                        <span class="info-value">05 MARCH 2026</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            TIME
+                        </span>
+                        <span class="info-value" id="ev-time">TBD</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            VENUE
+                        </span>
+                        <span class="info-value" id="ev-venue">TBD</span>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-label">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            TEAM SIZE
+                        </span>
+                        <span class="info-value" id="ev-team">TBD</span>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2 class="section-h">ABOUT THE EVENT</h2>
+                    <p class="about-text" id="ev-desc">
+                        Details are being loaded...
+                    </p>
+                </div>
+
+                <div class="coordinators-section">
+                    <div class="coord-group">
+                        <span class="coord-label">STUDENT COORDINATORS</span>
+                        <div class="coord-names" id="ev-stud-coord">---</div>
+                    </div>
+                    <div class="coord-group">
+                        <span class="coord-label">FACULTY COORDINATOR</span>
+                        <div class="coord-names" id="ev-fac-coord">---</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="registration-box">
+            <div class="reg-header">
+                <h2 class="reg-title">REGISTER NOW</h2>
+                <p class="reg-subtitle">Fill in your details to secure your slot at DECTRON 2K26.</p>
+            </div>
+
+            <form id="reg-form">
+                <h3 class="form-section-title">TEAM LEADER DETAILS</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="label">TEAM NAME *</label>
+                        <input type="text" placeholder="Enter your team name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">LEADER NAME *</label>
+                        <input type="text" placeholder="Leader's full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">LEADER EMAIL *</label>
+                        <input type="email" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">LEADER PHONE *</label>
+                        <input type="tel" placeholder="+91 00000 00000" required>
+                    </div>
+                    <div class="form-group full">
+                        <label class="label">LEADER COLLEGE *</label>
+                        <input type="text" placeholder="Enter your institution name" required>
+                    </div>
+                </div>
+
+                <h3 class="form-section-title">TEAM MEMBERS</h3>
+                <div class="form-grid" id="member-inputs">
+                    <div class="form-group">
+                        <label class="label">MEMBER 2 NAME (OPTIONAL)</label>
+                        <input type="text" placeholder="Full name">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">MEMBER 3 NAME (OPTIONAL)</label>
+                        <input type="text" placeholder="Full name">
+                    </div>
+                </div>
+
+                <h3 class="form-section-title">PAYMENT DETAILS</h3>
+                <div class="payment-card">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=dummy@upi&pn=DECTRON"
+                            alt="Payment QR">
+                    </div>
+                    <div class="payment-info">
+                        <div class="fee-highlight" id="ev-fee">FEE: ₹0</div>
+                        <p class="payment-steps">
+                            1. Scan the QR code to pay via UPI (GPay/PhonePe/Paytm).<br>
+                            2. Once paid, take a screenshot of the transaction.<br>
+                            3. Upload the screenshot below as proof of payment.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="file-upload">
+                    <div style="font-size: 32px; margin-bottom: 10px;">📤</div>
+                    <div class="label">CLICK OR DRAG TO UPLOAD PAYMENT PROOF</div>
+                    <div
+                        style="font-family: 'Inter', sans-serif !important; font-size: 12px; color: #555; margin-top: 5px;">
+                        JPG, PNG OR PDF (MAX 2MB)</div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="sub-btn">UPLOAD PROOF TO REGISTER</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <span class="footer-logo">DECTRON 2K26</span>
+        <p class="footer-copy">© 2026 DECTRON. National Level Symposium. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const eventData = {
+            'visionx': {
+                title: 'VISIONX',
+                cat: 'TECHNICAL EVENT',
+                desc: 'Present your innovative research papers and technical ideas before a panel of expert judges. VISIONX is your platform to showcase groundbreaking work in electronics and communication engineering.',
+                time: '9:00 AM - 12:00 PM',
+                venue: 'ECE Seminar Hall',
+                team: 'Max 3 Members',
+                fee: '₹100',
+                stud: 'Niranjan D (8778428579), Pavithra D (9865108301), Patrick Rohan V (7540011423)',
+                fac: 'Dr. V. Nanammal'
+            },
+            'creotix': {
+                title: 'CREOTIX',
+                cat: 'TECHNICAL EVENT',
+                desc: 'Unleash your creativity and design skills! Create visually stunning technical posters that communicate complex engineering concepts in an engaging way.',
+                time: '1:00 PM - 4:00 PM',
+                venue: 'DSP Lab',
+                team: 'Max 2 Members',
+                fee: '₹50',
+                stud: 'Lokpriyan M (9962040336), Janavi (6384074914), Vishali (7540036119)',
+                fac: 'Mr. B. Appoon'
+            },
+            'synoptix': {
+                title: 'SYNOPTIX',
+                cat: 'TECHNICAL EVENT',
+                desc: 'Test your knowledge and quick thinking in this fast-paced technical quiz covering all aspects of electronics and communication engineering!',
+                time: '9:00 AM - 12:00 PM',
+                venue: 'EDC Lab',
+                team: '2 Members',
+                fee: '₹50',
+                stud: 'Deepika (86680149602), Krithika S (9952017659), Naviya Dayana D (9042974395)',
+                fac: 'Mrs. R. Gracelin Sheeba'
+            },
+            'rtl': {
+                title: 'RTL',
+                cat: 'TECHNICAL EVENT',
+                desc: 'Challenge your analytical and problem-solving skills! Decode, analyze, and understand existing systems through reverse engineering techniques.',
+                time: '1:00 PM - 4:00 PM',
+                venue: 'Communication Lab',
+                team: '2-3 Members',
+                fee: '₹50',
+                stud: 'Rijo Devaraj B (8667853505)',
+                fac: 'Mr. E. Sakthivel'
+            },
+            'royal-gambit': {
+                title: 'ROYAL GAMBIT',
+                cat: 'NON-TECHNICAL EVENT',
+                desc: 'Checkmate your opponents in this classic game of strategy and intellect. Show your mastery in the royal game of chess!',
+                time: '9:00 AM - 5:00 PM',
+                venue: 'DSP lab',
+                team: 'Individual',
+                fee: '₹50',
+                stud: 'Rohit (8248518988), Sheikha Aslin A (9789540204)',
+                fac: 'Mr. C. Jerlin Ajith Davidson'
+            },
+            'pxarena': {
+                title: 'PXARENA',
+                cat: 'NON-TECHNICAL EVENT',
+                desc: 'Grab your controller and battle it out in the ultimate PS4 gaming tournament! Compete in popular games like FIFA, Tekken, and Call of Duty.',
+                time: '9:00 AM - 5:00 PM',
+                venue: 'VLSI Lab',
+                team: 'Individual / Team',
+                fee: '₹100',
+                stud: 'Jai Prakash (8072505227), Anbususe (8300963029)',
+                fac: 'Mr. J. Ranjith Kumar'
+            },
+            'funfinity': {
+                title: 'FUNFINITY',
+                cat: 'NON-TECHNICAL EVENT',
+                desc: 'Consists of exciting rounds testing strategy and creativity. Round 1 involves glass marbles games. Round 2 involves creating advertisements based on product and movie dialogues.',
+                time: '2:00 PM - 4:00 PM',
+                venue: 'S2',
+                team: 'Individual',
+                fee: '₹30',
+                stud: 'Thirukumaran (9043299423)',
+                fac: 'Mrs. C. Basirekha'
+            },
+            '404': {
+                title: '404 - FIND THE FAKE',
+                cat: 'NON-TECHNICAL EVENT',
+                desc: 'Put your detective skills to the test! Identify fake news from real news and learn about media literacy in this engaging challenge.',
+                time: '2:00 PM - 4:00 PM',
+                venue: 'S1',
+                team: 'Team of 2',
+                fee: '₹50',
+                stud: 'Jerolin (7305936089)',
+                fac: 'Mrs. S. Priyadharshini'
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('id');
+        const data = eventData[eventId];
+
+        if (data) {
+            document.title = `${data.title} - DECTRON 2K26`;
+            document.getElementById('ev-cat').textContent = data.cat;
+            document.getElementById('ev-title').textContent = data.title;
+            document.getElementById('ev-time').textContent = data.time;
+            document.getElementById('ev-venue').textContent = data.venue;
+            document.getElementById('ev-team').textContent = data.team;
+            document.getElementById('ev-desc').textContent = data.desc;
+            document.getElementById('ev-stud-coord').textContent = data.stud;
+            document.getElementById('ev-fac-coord').textContent = data.fac;
+            document.getElementById('ev-fee').textContent = `FEE: ${data.fee}`;
+            document.getElementById('sub-btn').textContent = `PAY ${data.fee} & REGISTER`;
+        } else {
+            document.getElementById('ev-title').textContent = 'EVENT NOT FOUND';
+        }
+
+        document.getElementById('reg-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Payment proof received! Our team will verify and send confirmation within 24 hours. Welcome to the show.');
+        });
+
+        function toggleMenu() {
+            const nav = document.getElementById('nav-items-container');
+            const toggle = document.querySelector('.mobile-toggle');
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

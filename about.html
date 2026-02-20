@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - DECTRON 2K26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bebas Neue', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif !important;
+        }
+
+        html,
+        body {
+            background: #000000;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== NAVIGATION (Shared) ===== */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 40px;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 32px;
+            color: #dc2626;
+            text-decoration: none;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            color: #888;
+            font-size: 18px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: white;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #dc2626;
+        }
+
+        .nav-cta {
+            background: #dc2626;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== PAGE CONTENT ===== */
+        .page-header {
+            padding: 180px 40px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-title {
+            font-size: clamp(60px, 10vw, 120px);
+            color: white;
+            line-height: 0.9;
+        }
+
+        .page-subtitle {
+            font-family: 'Inter', sans-serif !important;
+            color: #dc2626;
+            font-size: 18px;
+            letter-spacing: 4px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ===== ABOUT CONTENT ===== */
+        .content-section {
+            padding: 0 40px 100px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-wrap {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 80px;
+            line-height: 1.8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, #dc2626, transparent);
+        }
+
+        .about-wrap h2 {
+            font-size: 42px;
+            color: #dc2626;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about-wrap p {
+            font-family: 'Inter', sans-serif !important;
+            color: #999;
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+
+        .quote-box {
+            background: rgba(220, 38, 38, 0.05);
+            border-left: 4px solid #dc2626;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 0 12px 12px 0;
+            position: relative;
+        }
+
+        .quote-box p {
+            font-style: italic;
+            color: white;
+            margin-bottom: 0;
+            font-size: 20px;
+        }
+
+        .jester-face {
+            width: 80px;
+            height: 80px;
+            margin: 40px auto 0;
+            background: url('https://customer-assets.emergentagent.com/job_github-clone-14/artifacts/wicked_jester_casino_1771501319476.png') center/contain no-repeat;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 900px) {
+            .navigation {
+                padding: 1rem 20px;
+            }
+
+            .nav-items {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: #000;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                z-index: 1000;
+            }
+
+            .nav-items.active {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .page-header {
+                padding: 120px 20px 40px;
+            }
+
+            .page-title {
+                font-size: 50px;
+            }
+
+            .content-section {
+                padding: 0 20px 60px;
+            }
+
+            .about-wrap {
+                padding: 40px 20px;
+            }
+
+            .about-wrap h2 {
+                font-size: 32px;
+            }
+
+            .about-wrap p {
+                font-size: 16px;
+            }
+
+            .quote-box {
+                padding: 20px;
+            }
+
+            .quote-box p {
+                font-size: 18px;
+            }
+
+            footer {
+                padding: 40px 20px;
+            }
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 30px;
+            height: 2px;
+            background: #dc2626;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navigation">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">DECTRON 2K26</a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-items" id="nav-items-container">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="technical.html" class="nav-item">Technical Events</a>
+                <a href="non-technical.html" class="nav-item">Non-Technical</a>
+                <a href="coordinators.html" class="nav-item">Coordinators</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+            </nav>
+            <a href="register.html" class="nav-cta">Register Now</a>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">THE GRAND DECK</h1>
+        <p class="page-subtitle">Beneath the Mask of Dectron</p>
+    </div>
+
+    <section class="content-section">
+        <div class="about-wrap">
+            <h2>WELCOME TO THE ARENA</h2>
+            <p>Dectron'26 is not just a symposium; it's a high-stakes arena where the brightest minds come to bet on
+                their own innovation. This year, we've stripped away the corporate polish and embraced the thrill of the
+                gamble with our theme: <strong>The Wicked Jester</strong>.</p>
+
+            <p>Every line of code written, every circuit designed, and every strategy formed is a card played in our
+                grand casino. We believe that true progress comes from calculated risks and the courage to double down
+                on your ideas when the chips are down.</p>
+
+            <div class="quote-box">
+                <p>"In the house of technology, the only way to beat the dealer is to become the architect of a new
+                    game. Dectron'26 is your seat at the table."</p>
+            </div>
+
+            <p>Hosted by the Information Technology Department, Dectron'26 features two days of intense competition
+                across technical and non-technical domains. Whether you're aiming for the jackpot in our hackathon or
+                bluffing your way through our social games, the experience is designed to be wicked, thrilling, and
+                unforgettable.</p>
+
+            <p>Are you ready to play? The Jester is waiting.</p>
+
+            <div class="jester-face"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 DECTRON. National Level Symposium. The Wicked Jester is Watching.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('page-loaded');
+        });
+
+        function toggleMenu() {
+            const nav = document.getElementById('nav-items-container');
+            const toggle = document.querySelector('.mobile-toggle');
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

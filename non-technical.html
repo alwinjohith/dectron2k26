@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Technical Events - DECTRON 2K26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Bebas+Neue&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bebas Neue', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif !important;
+        }
+
+        html,
+        body {
+            background: #000000;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ===== NAVIGATION (Shared) ===== */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 40px;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 32px;
+            color: #dc2626;
+            text-decoration: none;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            color: #888;
+            font-size: 18px;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: white;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #dc2626;
+        }
+
+        .nav-cta {
+            background: #dc2626;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: #991b1b;
+            transform: scale(1.05);
+        }
+
+        /* ===== PAGE CONTENT ===== */
+        .page-header {
+            padding: 180px 40px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -20%);
+            z-index: -1;
+        }
+
+        .page-title {
+            font-size: clamp(60px, 10vw, 120px);
+            color: white;
+            line-height: 0.9;
+        }
+
+        .page-subtitle {
+            font-family: 'Inter', sans-serif !important;
+            color: #dc2626;
+            font-size: 18px;
+            letter-spacing: 4px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ===== EVENTS GRID ===== */
+        .grid-section {
+            padding: 0 40px 100px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .casino-card {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .casino-card:hover {
+            transform: translateY(-15px);
+            border-color: #dc2626;
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 64px;
+            color: rgba(255, 255, 255, 0.03);
+            line-height: 1;
+        }
+
+        .card-title {
+            font-size: 32px;
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-desc {
+            font-family: 'Inter', sans-serif !important;
+            color: #999;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .prize-pool {
+            color: #c5a059;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .bet-btn {
+            background: transparent;
+            border: 2px solid #dc2626;
+            color: #dc2626;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .bet-btn:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        footer {
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #555;
+            font-size: 14px;
+        }
+
+        footer p {
+            opacity: 0.6;
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 30px;
+            height: 2px;
+            background: #dc2626;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 1024px) {
+            .navigation {
+                padding: 1rem 20px;
+            }
+
+            .nav-items {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: #000;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                z-index: 1000;
+            }
+
+            .nav-items.active {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .page-header {
+                padding: 120px 20px 60px;
+            }
+
+            .page-title {
+                font-size: 60px;
+            }
+
+            .page-subtitle {
+                font-size: 16px;
+            }
+
+            .grid-section {
+                padding: 0 20px 80px;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .casino-card {
+                padding: 30px;
+            }
+
+            footer {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navigation">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">DECTRON 2K26</a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="nav-items" id="nav-items-container">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="technical.html" class="nav-item">Technical Events</a>
+                <a href="non-technical.html" class="nav-item active">Non-Technical</a>
+                <a href="coordinators.html" class="nav-item">Coordinators</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+            </nav>
+            <a href="register.html" class="nav-cta">Register Now</a>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">NON-TECHNICAL</h1>
+        <p class="page-subtitle">Wicked Thrills & High Stakes</p>
+    </div>
+
+    <section class="grid-section">
+        <div class="events-grid">
+            <div class="casino-card">
+                <div class="card-number">K</div>
+                <h3 class="card-title">ROYAL GAMBIT</h3>
+                <p class="card-desc">Checkmate your opponents in this classic game of strategy and intellect. Show your
+                    mastery in the royal game of chess!<br><br>
+                    <strong>ENTRY FEE:</strong> ₹50 per Team<br>
+                    <strong>VENUE:</strong> DSP lab.<br>
+                    <strong>FORMAT:</strong> Individual participation, Knockout format, 10 min time control.<br>
+                    <strong>PRIZES:</strong> Trophies and certificates for top 3!<br>
+                    <strong>COORDINATORS:</strong> Rohit (8248518988), Sheikha Aslin A (9789540204)
+                </p>
+                <div class="card-footer">
+                    <span class="prize-pool">FEE: ₹50</span>
+                    <a href="event-detail.html?id=royal-gambit" class="bet-btn">JOIN GAME</a>
+                </div>
+            </div>
+
+            <div class="casino-card">
+                <div class="card-number">Q</div>
+                <h3 class="card-title">PXARENA</h3>
+                <p class="card-desc">Grab your controller and battle it out in the ultimate PS4 gaming tournament!
+                    Compete in popular games like FIFA, Tekken, and COD!<br><br>
+                    <strong>ENTRY FEE:</strong> ₹100 per person<br>
+                    <strong>VENUE:</strong> VLSI Lab.<br>
+                    <strong>FORMAT:</strong> Individual/Team, Knockout rounds throughout the day.<br>
+                    <strong>PRIZES:</strong> Gaming merchandise and certificates!<br>
+                    <strong>COORDINATORS:</strong> Jai Prakash (8072505227), Anbususe (8300963029)
+                </p>
+                <div class="card-footer">
+                    <span class="prize-pool">FEE: ₹100</span>
+                    <a href="event-detail.html?id=pxarena" class="bet-btn">ENTER ARENA</a>
+                </div>
+            </div>
+
+            <div class="casino-card">
+                <div class="card-number">J</div>
+                <h3 class="card-title">FUNFINITY</h3>
+                <p class="card-desc">Two exciting rounds: Marble games strategy and creative movie-dialogue
+                    advertisements. The ultimate test of laughter and luck!<br><br>
+                    <strong>ENTRY FEE:</strong> ₹30 per person<br>
+                    <strong>VENUE:</strong> S2.<br>
+                    <strong>FORMAT:</strong> Multi-round marble challenges and ad-creation showdown.<br>
+                    <strong>PRIZES:</strong> Recognition and prizes for the funniest performers!<br>
+                    <strong>COORDINATORS:</strong> Thirukumaran (9043299423)
+                </p>
+                <div class="card-footer">
+                    <span class="prize-pool">FEE: ₹30</span>
+                    <a href="event-detail.html?id=funfinity" class="bet-btn">TAKE STAGE</a>
+                </div>
+            </div>
+
+            <div class="casino-card">
+                <div class="card-number">10</div>
+                <h3 class="card-title">404 - FIND THE FAKE</h3>
+                <p class="card-desc">Put your detective skills to the test! Identify fake news from real news and learn
+                    media literacy in this engaging challenge.<br><br>
+                    <strong>ENTRY FEE:</strong> ₹50 per team<br>
+                    <strong>VENUE:</strong> S1.<br>
+                    <strong>FORMAT:</strong> Teams of 2, multiple rounds, news/social media analysis.<br>
+                    <strong>PRIZES:</strong> Certificates and prizes for the sharpest detectives!<br>
+                    <strong>COORDINATORS:</strong> Jerolin (7305936089)
+                </p>
+                <div class="card-footer">
+                    <span class="prize-pool">FEE: ₹50</span>
+                    <a href="event-detail.html?id=404" class="bet-btn">SOLVE CASE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 DECTRON. National Level Symposium. The Wicked Jester is Watching.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('page-loaded');
+        });
+
+        function toggleMenu() {
+            const nav = document.getElementById('nav-items-container');
+            const toggle = document.querySelector('.mobile-toggle');
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
